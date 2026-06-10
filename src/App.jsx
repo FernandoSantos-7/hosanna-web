@@ -105,7 +105,7 @@ function App() {
 
   const prediccionesPendulo = [
     "Sí. Los caminos están totalmente abiertos y la energía cósmica fluye a tu favor. ✨",
-    "La energía está en constante movimiento. Esperá, meditá en silencio y volvé a consultar. 🌀",
+    "La energía está en constante movimiento. Esperá, meditá in silencio y volvé a consultar. 🌀",
     "No es el momento propicio para avanzar in esa dirección. Protegé tu energía y tené paciencia. 🌕",
     "Absolutamente. Confiá plenamente en tu intuición, la respuesta ya habita dentro tuyo. 💜",
     "Hay un bloqueo temporal en el entorno. Una limpieza energética profunda traerá la luz que buscás. 🕯️"
@@ -123,7 +123,14 @@ function App() {
 
   const handleConsultarPendulo = (e) => {
     e.preventDefault();
-    if (!pregunta.trim() || oscilando) return;
+    
+    const textoLimpio = pregunta.trim();
+    const esSoloNumeros = /^\d+$/.test(textoLimpio);
+
+    // Bloqueo técnico: Si está vacío, tiene menos de 6 letras o son solo números, frena la ejecución
+    if (!textoLimpio || oscilando || textoLimpio.length < 6 || esSoloNumeros) {
+      return;
+    }
 
     setOscilando(true);
     setRespuestaPendulo('');
@@ -141,11 +148,10 @@ function App() {
   return (
     <div style={{ background: colors.bgGradient, minHeight: '100vh', color: colors.primaryText, ...fontSans, padding: '0', overflowX: 'hidden' }}>
       
-      {/* 📱 CLASES DE RESPONSIVE CSS PARA SOLUCIONAR EL ERROR DEL CELULAR */}
+      {/* 📱 CLASES DE RESPONSIVE CSS CONSERVADAS PERFECTAMENTE */}
       <style>{`
         body { margin: 0; padding: 0; background-color: #f5f0fa; overflow-x: hidden; }
         
-        /* Valores por defecto para Computadoras */
         .main-title {
           font-size: 6.5rem;
           letter-spacing: 0.3rem;
@@ -157,10 +163,9 @@ function App() {
           width: 460px;
         }
 
-        /* 🌟 AJUSTES EN VIVO CUANDO SE ABRE DESDE UN CELULAR */
         @media (max-width: 768px) {
           .main-title {
-            font-size: 3.2rem !important; /* Achica el texto para que no se desacomode */
+            font-size: 3.2rem !important;
             letter-spacing: 0.1rem !important;
             line-height: 1.1 !important;
           }
@@ -169,7 +174,7 @@ function App() {
             margin-top: 0.5rem !important;
           }
           .watermark-logo {
-            width: 290px !important; /* Reduce la marca de agua para que entre limpia */
+            width: 290px !important;
           }
         }
 
@@ -201,7 +206,7 @@ function App() {
         ✦ ESPACIO HOLÍSTICO VIBRACIONAL DE ALTA FRECUENCIA ✦
       </div>
 
-      {/* HERO SECTION RESPONSIVA */}
+      {/* HERO SECTION */}
       <header style={{ position: 'relative', textAlign: 'center', padding: '5rem 1rem 4rem 1rem', maxWidth: '1200px', margin: '0 auto', overflow: 'hidden' }}>
         <img 
           src="/logo.hosanna.jfif" 
@@ -233,7 +238,7 @@ function App() {
         </div>
       </header>
 
-      {/* 🔮 SECCIÓN INTERACTIVA: EL ORÁCULO DE CARTAS */}
+      {/* 🔮 ORÁCULO DE CARTAS */}
       <section style={{ maxWidth: '1200px', margin: '0 auto 5rem auto', textAlign: 'center', backgroundColor: '#ffffff', padding: '3rem 1.5rem', borderRadius: '2rem', border: '1px solid rgba(181, 141, 61, 0.2)', boxShadow: '0 15px 45px rgba(109, 40, 217, 0.06)' }}>
         <h2 style={{ ...fontSerif, color: colors.primaryText, fontSize: '2.1rem', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>Tu Mensaje del Universo</h2>
         <p style={{ color: colors.lavenderText, fontSize: '1.05rem', marginBottom: '3rem', fontWeight: '400' }}>Centrá tu intención, elegí una de las tres cartas sagradas y descubrí qué energía guía tu camino hoy.</p>
@@ -293,14 +298,13 @@ function App() {
         )}
       </section>
 
-      {/* 💼 SECCIÓN DE SERVICIOS ADAPTADA A CELULARES */}
+      {/* 💼 SECCIÓN DE SERVICIOS */}
       <section style={{ backgroundColor: colors.bgSectionContrast, padding: '5rem 1rem', borderTop: '1px solid rgba(181,141,61,0.08)', borderBottom: '1px solid rgba(181,141,61,0.08)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.6rem', letterSpacing: '0.2em', color: colors.primaryText, textAlign: 'center', marginBottom: '3.5rem', fontWeight: '600' }}>
             Procesos de Sanación Sagrada
           </h2>
           
-          {/* Ajustado el minmax a 290px para que entre perfecto en pantallas chicas */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '2rem' }}>
             {servicios.map((ser, i) => (
               <div 
@@ -333,7 +337,7 @@ function App() {
         </div>
       </section>
 
-      {/* 🔮 SECCIÓN D: EL CONSULTOR DEL PÉNDULO INTERACTIVO */}
+      {/* 🔮 SECCIÓN: EL ORÁCULO DEL PÉNDULO (CON VALIDACIÓN DE ENTRADA PREMIUM) */}
       <section style={{ maxWidth: '800px', margin: '5rem auto', padding: '0 1rem', textAlign: 'center' }}>
         <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.5rem', letterSpacing: '0.15em', color: colors.primaryText, marginBottom: '0.5rem' }}>
           El Oráculo del Péndulo
@@ -358,10 +362,23 @@ function App() {
               disabled={oscilando}
               style={{ width: '100%', padding: '0.9rem 1.2rem', border: '1px solid rgba(181, 141, 61, 0.35)', borderRadius: '9999px', fontSize: '1rem', outline: 'none', textAlign: 'center', color: colors.primaryText, boxSizing: 'border-box', backgroundColor: '#fdfbfe' }}
             />
+            
+            {/* BOTÓN VALIDADO: Se bloquea y se pone gris si no cumple los requisitos mínimos de texto */}
             <button 
               type="submit"
-              disabled={oscilando || !pregunta.trim()}
-              style={{ marginTop: '1.25rem', backgroundColor: oscilando || !pregunta.trim() ? '#d1d5db' : colors.primaryText, color: '#fff', padding: '0.8rem 2rem', borderRadius: '9999px', fontSize: '0.95rem', fontWeight: '600', border: 'none', cursor: 'pointer', transition: 'all 0.2s' }}
+              disabled={oscilando || pregunta.trim().length < 6 || /^\d+$/.test(pregunta.trim())}
+              style={{ 
+                marginTop: '1.25rem', 
+                backgroundColor: (oscilando || pregunta.trim().length < 6 || /^\d+$/.test(pregunta.trim())) ? '#d1d5db' : colors.primaryText, 
+                color: '#fff', 
+                padding: '0.8rem 2rem', 
+                borderRadius: '9999px', 
+                fontSize: '0.95rem', 
+                fontWeight: '600', 
+                border: 'none', 
+                cursor: (oscilando || pregunta.trim().length < 6 || /^\d+$/.test(pregunta.trim())) ? 'not-allowed' : 'pointer', 
+                transition: 'all 0.2s' 
+              }}
             >
               {oscilando ? "El Péndulo está oscilando..." : "Consultar al Péndulo"}
             </button>
@@ -375,7 +392,7 @@ function App() {
         </div>
       </section>
 
-      {/* 🎡 SECCIÓN B: CARRUSEL DE TESTIMONIOS */}
+      {/* 🎡 CARRUSEL DE TESTIMONIOS */}
       <section style={{ maxWidth: '900px', margin: '0 auto 5rem auto', padding: '0 1rem', textAlign: 'center' }}>
         <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.4rem', letterSpacing: '0.15em', color: colors.goldRefined, marginBottom: '2.5rem' }}>
           Experiencias en Hosanna
@@ -386,7 +403,7 @@ function App() {
           </p>
           <div style={{ animation: 'fadeIn 0.5s' }}>
             <h4 style={{ margin: '0', color: colors.lavenderText, fontSize: '1rem', fontWeight: '600' }}>{testimonios[testimonioActual].nombre}</h4>
-            <p style={{ margin: '0.25rem 0 0 0', color: colors.secondaryText, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{testimonios[testimonioActual].rol}</p>
+            <p style={{ margin: '0.25rem 0 0 0', color: colors.secondaryText, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{testimonios[testimonioActual].role}</p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
             <button onClick={() => setTestimonioActual((p) => (p - 1 + testimonios.length) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>←</button>
@@ -407,8 +424,6 @@ function App() {
 
       {/* 📱 FOOTER */}
       <footer style={{ textAlign: 'center', padding: '3rem 1rem', borderTop: '1px solid rgba(181, 141, 61, 0.15)', maxWidth: '800px', margin: '0 auto' }}>
-        
-        {/* INSTAGRAM COMPACTO */}
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
           <a 
             href="https://instagram.com/hosanna.by_cin" 
