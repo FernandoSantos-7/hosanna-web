@@ -24,6 +24,7 @@ function App() {
   const [respuestaPendulo, setRespuestaPendulo] = useState('')
   const [oscilando, setOscilando] = useState(false)
 
+  // Carga de fuentes tipográficas sagradas
   useEffect(() => {
     const linkSerif = document.createElement('link');
     linkSerif.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,500&display=swap';
@@ -103,6 +104,15 @@ function App() {
     }
   ]
 
+  // 🌟 EFECTO DE ROTACIÓN AUTOMÁTICA PARA EL CARRUSEL (Cada 5 segundos)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTestimonioActual((prev) => (prev + 1) % testimonios.length);
+    }, 5000); // 5000ms = 5 segundos por testimonio
+    
+    return () => clearTimeout(timer); // Limpia el timer para reiniciar el conteo si el usuario hace clic manual
+  }, [testimonioActual]);
+
   const prediccionesPendulo = [
     "Sí. Los caminos están totalmente abiertos y la energía cósmica fluye a tu favor. ✨",
     "La energía está en constante movimiento. Esperá, meditá in silencio y volvé a consultar. 🌀",
@@ -127,7 +137,6 @@ function App() {
     const textoLimpio = pregunta.trim();
     const esSoloNumeros = /^\d+$/.test(textoLimpio);
 
-    // Bloqueo técnico: Si está vacío, tiene menos de 6 letras o son solo números, frena la ejecución
     if (!textoLimpio || oscilando || textoLimpio.length < 6 || esSoloNumeros) {
       return;
     }
@@ -148,7 +157,7 @@ function App() {
   return (
     <div style={{ background: colors.bgGradient, minHeight: '100vh', color: colors.primaryText, ...fontSans, padding: '0', overflowX: 'hidden' }}>
       
-      {/* 📱 CLASES DE RESPONSIVE CSS CONSERVADAS PERFECTAMENTE */}
+      {/* 📱 ESTILOS RESPONSIVOS Y ANIMACIONES */}
       <style>{`
         body { margin: 0; padding: 0; background-color: #f5f0fa; overflow-x: hidden; }
         
@@ -232,7 +241,7 @@ function App() {
             Espacio Holístico & Evolución Espiritual
           </p>
           <p style={{ color: colors.secondaryText, maxWidth: '750px', margin: '1.5rem auto 0 auto', fontSize: '1.1rem', lineHeight: '1.8', fontWeight: '300' }}>
-            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu realidad más elevada.
+            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu reality más elevada.
           </p>
           <div style={{ width: '80px', height: '1px', backgroundColor: colors.goldRefined, margin: '2rem auto', opacity: 0.3 }}></div>
         </div>
@@ -337,7 +346,7 @@ function App() {
         </div>
       </section>
 
-      {/* 🔮 SECCIÓN: EL ORÁCULO DEL PÉNDULO (CON VALIDACIÓN DE ENTRADA PREMIUM) */}
+      {/* 🔮 SECCIÓN: EL ORÁCULO DEL PÉNDULO */}
       <section style={{ maxWidth: '800px', margin: '5rem auto', padding: '0 1rem', textAlign: 'center' }}>
         <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.5rem', letterSpacing: '0.15em', color: colors.primaryText, marginBottom: '0.5rem' }}>
           El Oráculo del Péndulo
@@ -363,7 +372,6 @@ function App() {
               style={{ width: '100%', padding: '0.9rem 1.2rem', border: '1px solid rgba(181, 141, 61, 0.35)', borderRadius: '9999px', fontSize: '1rem', outline: 'none', textAlign: 'center', color: colors.primaryText, boxSizing: 'border-box', backgroundColor: '#fdfbfe' }}
             />
             
-            {/* BOTÓN VALIDADO: Se bloquea y se pone gris si no cumple los requisitos mínimos de texto */}
             <button 
               type="submit"
               disabled={oscilando || pregunta.trim().length < 6 || /^\d+$/.test(pregunta.trim())}
@@ -392,22 +400,28 @@ function App() {
         </div>
       </section>
 
-      {/* 🎡 CARRUSEL DE TESTIMONIOS */}
+      {/* 🎡 CARRUSEL DE TESTIMONIOS (¡AHORA ROTANDO AUTOMÁTICAMENTE!) */}
       <section style={{ maxWidth: '900px', margin: '0 auto 5rem auto', padding: '0 1rem', textAlign: 'center' }}>
         <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.4rem', letterSpacing: '0.15em', color: colors.goldRefined, marginBottom: '2.5rem' }}>
           Experiencias en Hosanna
         </h2>
-        <div style={{ backgroundColor: '#ffffff', padding: '2.5rem 1.5rem', borderRadius: '2rem', border: '1px solid rgba(181, 141, 61, 0.2)', boxShadow: '0 15px 45px rgba(0,0,0,0.01)', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <p style={{ fontSize: '1.1rem', fontStyle: 'italic', color: colors.primaryText, lineHeight: '1.7', margin: '0 0 1.5rem 0', fontWeight: '300', key: testimonioActual, animation: 'fadeIn 0.5s' }}>
-            {testimonios[testimonioActual].texto}
-          </p>
-          <div style={{ animation: 'fadeIn 0.5s' }}>
-            <h4 style={{ margin: '0', color: colors.lavenderText, fontSize: '1rem', fontWeight: '600' }}>{testimonios[testimonioActual].nombre}</h4>
-            <p style={{ margin: '0.25rem 0 0 0', color: colors.secondaryText, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{testimonios[testimonioActual].role}</p>
+        <div style={{ backgroundColor: '#ffffff', padding: '2.5rem 1.5rem', borderRadius: '2rem', border: '1px solid rgba(181, 141, 61, 0.2)', boxShadow: '0 15px 45px rgba(0,0,0,0.01)', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '260px' }}>
+          
+          {/* Contenedor del texto animado */}
+          <div key={testimonioActual} style={{ animation: 'fadeIn 0.6s ease-out' }}>
+            <p style={{ fontSize: '1.1rem', fontStyle: 'italic', color: colors.primaryText, lineHeight: '1.7', margin: '0 0 1.5rem 0', fontWeight: '300' }}>
+              {testimonios[testimonioActual].texto}
+            </p>
+            <div>
+              <h4 style={{ margin: '0', color: colors.lavenderText, fontSize: '1rem', fontWeight: '600' }}>{testimonios[testimonioActual].nombre}</h4>
+              <p style={{ margin: '0.25rem 0 0 0', color: colors.secondaryText, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{testimonios[testimonioActual].rol}</p>
+            </div>
           </div>
+
+          {/* Flechas de control manual */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
-            <button onClick={() => setTestimonioActual((p) => (p - 1 + testimonios.length) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>←</button>
-            <button onClick={() => setTestimonioActual((p) => (p + 1) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>→</button>
+            <button onClick={() => setTestimonioActual((p) => (p - 1 + testimonios.length) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}>←</button>
+            <button onClick={() => setTestimonioActual((p) => (p + 1) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}>→</button>
           </div>
         </div>
       </section>
