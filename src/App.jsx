@@ -89,13 +89,14 @@ function App() {
     }
   ]
 
+  // DATOS DE TESTIMONIOS CON LA PALABRA BURNOUT YA CORREGIDA ✨
   const testimonios = [
     {
       texto: "«Hice la Mesa Cuántica con Hosanna y a los tres días destrabé un negocio de exportación que venía frenado hace meses. La claridad energética que te da no tiene nombre.»",
       nombre: "Laura Giménez", rol: "Emprendedora de Moda & Comercio Exterior"
     },
     {
-      texto: "«Venía sufriendo de un burnout terrible por el estrés de la agencia. Las Barras de Acceso con ella me resetearon la cabeza. Recuperé el foco y la tranquilidad para liderar.»",
+      texto: "«Venía sufriendo de mucho estrés por el ritmo de la agencia. Las Barras de Acceso con ella me resetearon la cabeza. Recuperé el foco y la tranquilidad para liderar.»",
       nombre: "Martín Rodríguez", rol: "Director de Agencia de Marketing Digital"
     },
     {
@@ -104,19 +105,18 @@ function App() {
     }
   ]
 
-  // 🌟 EFECTO DE ROTACIÓN AUTOMÁTICA PARA EL CARRUSEL (Cada 5 segundos)
+  // EFECTO DE ROTACIÓN AUTOMÁTICA PARA EL CARRUSEL (Cada 5 segundos)
   useEffect(() => {
     const timer = setTimeout(() => {
       setTestimonioActual((prev) => (prev + 1) % testimonios.length);
-    }, 5000); // 5000ms = 5 segundos por testimonio
-    
-    return () => clearTimeout(timer); // Limpia el timer para reiniciar el conteo si el usuario hace clic manual
+    }, 5000);
+    return () => clearTimeout(timer);
   }, [testimonioActual]);
 
   const prediccionesPendulo = [
     "Sí. Los caminos están totalmente abiertos y la energía cósmica fluye a tu favor. ✨",
-    "La energía está en constante movimiento. Esperá, meditá in silencio y volvé a consultar. 🌀",
-    "No es el momento propicio para avanzar in esa dirección. Protegé tu energía y tené paciencia. 🌕",
+    "La energía está en constante movimiento. Esperá, meditá en silencio y volvé a consultar. 🌀",
+    "No es el momento propicio para avanzar en esa dirección. Protegé tu energía y tené paciencia. 🌕",
     "Absolutamente. Confiá plenamente en tu intuición, la respuesta ya habita dentro tuyo. 💜",
     "Hay un bloqueo temporal en el entorno. Una limpieza energética profunda traerá la luz que buscás. 🕯️"
   ]
@@ -157,7 +157,7 @@ function App() {
   return (
     <div style={{ background: colors.bgGradient, minHeight: '100vh', color: colors.primaryText, ...fontSans, padding: '0', overflowX: 'hidden' }}>
       
-      {/* 📱 ESTILOS RESPONSIVOS Y ANIMACIONES */}
+      {/* 📱 ESTILOS RESPONSIVOS Y ANIMACIONES CONSERVADOS PERFECTAMENTE */}
       <style>{`
         body { margin: 0; padding: 0; background-color: #f5f0fa; overflow-x: hidden; }
         
@@ -241,7 +241,7 @@ function App() {
             Espacio Holístico & Evolución Espiritual
           </p>
           <p style={{ color: colors.secondaryText, maxWidth: '750px', margin: '1.5rem auto 0 auto', fontSize: '1.1rem', lineHeight: '1.8', fontWeight: '300' }}>
-            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu reality más elevada.
+            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu realidad más elevada.
           </p>
           <div style={{ width: '80px', height: '1px', backgroundColor: colors.goldRefined, margin: '2rem auto', opacity: 0.3 }}></div>
         </div>
@@ -400,14 +400,13 @@ function App() {
         </div>
       </section>
 
-      {/* 🎡 CARRUSEL DE TESTIMONIOS (¡AHORA ROTANDO AUTOMÁTICAMENTE!) */}
+      {/* 🎡 CARRUSEL DE TESTIMONIOS (CON ROTACIÓN AUTOMÁTICA CADA 5s) */}
       <section style={{ maxWidth: '900px', margin: '0 auto 5rem auto', padding: '0 1rem', textAlign: 'center' }}>
         <h2 style={{ ...fontSerif, textTransform: 'uppercase', fontSize: '1.4rem', letterSpacing: '0.15em', color: colors.goldRefined, marginBottom: '2.5rem' }}>
           Experiencias en Hosanna
         </h2>
         <div style={{ backgroundColor: '#ffffff', padding: '2.5rem 1.5rem', borderRadius: '2rem', border: '1px solid rgba(181, 141, 61, 0.2)', boxShadow: '0 15px 45px rgba(0,0,0,0.01)', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '260px' }}>
           
-          {/* Contenedor del texto animado */}
           <div key={testimonioActual} style={{ animation: 'fadeIn 0.6s ease-out' }}>
             <p style={{ fontSize: '1.1rem', fontStyle: 'italic', color: colors.primaryText, lineHeight: '1.7', margin: '0 0 1.5rem 0', fontWeight: '300' }}>
               {testimonios[testimonioActual].texto}
@@ -418,7 +417,6 @@ function App() {
             </div>
           </div>
 
-          {/* Flechas de control manual */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
             <button onClick={() => setTestimonioActual((p) => (p - 1 + testimonios.length) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}>←</button>
             <button onClick={() => setTestimonioActual((p) => (p + 1) % testimonios.length)} style={{ background: 'none', border: `1.5px solid ${colors.goldRefined}`, color: colors.goldRefined, width: '40px', height: '40px', borderRadius: '50%', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}>→</button>
