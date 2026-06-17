@@ -1,16 +1,20 @@
-# React + Vite
+# Hosanna Web - Espacio Holístico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es la plataforma oficial de **Hosanna**, un espacio dedicado a la evolución espiritual y sanación energética[cite: 1].
 
-Currently, two official plugins are available:
+## Sobre el Proyecto
+Desarrollado como una aplicación web moderna para facilitar la conexión con usuarios interesados en terapias holísticas, incluyendo:
+- Mesa Cuántica Energética
+- Barras de Access
+- Terapias con Péndulo y más.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Desarrollador
+Proyecto desarrollado por **Fernando Ezequiel Santos**  
+*Analista de Sistemas de Información*[cite: 1]
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+### 🎓 Formación Académica
+**Analista de Sistemas de Información**  
+*Superior Nuestra Señora de la Paz (A-1126)*  
+* **Fecha de egreso:** 16 de diciembre de 2025[cite: 1]
+* **Promedio General:** 8.25[cite: 1]
