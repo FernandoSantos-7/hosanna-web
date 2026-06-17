@@ -47,12 +47,12 @@ function App() {
   const servicios = [
     { 
       titulo: "Mesa Cuántica Energética", 
-      desc: "Armonización profunda de tus campos energéticos para desbloquear situaciones estancadas y elevar tu vibración a su estado óptimo.",
+      desc: "Lectura y diagnóstico energético para detectar bloqueos, interferencias o desequilibrios, para luego ajustar, elevar la frecuencia y restablecer el equilibrio, abrir caminos y establecer nuevas configuraciones de éxito y crecimiento personal.",
       bg: '#ebd5ff', 
       glow: 'rgba(168, 85, 247, 0.7)'
     },
     { 
-      titulo: "Barras de Acces", 
+      titulo: "Barras de Access", 
       desc: "Activación de 32 puntos mágicos en la cabeza para disolver el estrés, la ansiedad y las creencias limitantes que frenan tu evolución.",
       bg: '#bae6fd', 
       glow: 'rgba(14, 165, 233, 0.7)'
@@ -64,7 +64,7 @@ function App() {
       glow: 'rgba(244, 114, 182, 0.7)'
     },
     { 
-      titulo: "Terapias con Péndulo Hebrew", 
+      titulo: "Terapias con Péndulo Hebreo", 
       desc: "Detección, limpieza y sanación integral del aura, transmutando energías densas, bloqueos y restaurando tu equilibrio sagrado.",
       bg: '#bbf7d0', 
       glow: 'rgba(34, 197, 94, 0.7)'
@@ -76,8 +76,8 @@ function App() {
       glow: 'rgba(13, 148, 136, 0.7)'
     },
     { 
-      titulo: "Terapia Piramidal", 
-      desc: "Canalización de energía cósmica a través de geometría sagrada para la restauración física, mental, sutil y celular.",
+      titulo: "Terapia Piramidal Energética", 
+      desc: "Canalización de energía a través de una pirámide de cobre y Orgonitas, a la cual se le suma el poder de la geometría sagrada, para lograr, conjuntamente con una meditación, la restauración de tus centros energéticos.",
       bg: '#fef08a', 
       glow: 'rgba(234, 179, 8, 0.7)'
     },
@@ -86,6 +86,12 @@ function App() {
       desc: "Sanación profunda guiada con hipnosis clínica y memoria celular para soltar definitivamente patrones dolorosos y lazos del pasado.",
       bg: '#fed7aa', 
       glow: 'rgba(249, 115, 22, 0.7)'
+    },
+    { 
+      titulo: "Tienda holística", 
+      desc: "En el catálogo de WhatsApp podrás encontrar los mejores sahumerios y productos para liberar tus espacios de energías no gratas y convertirlos en tu templo de bienestar.",
+      bg: '#d1fae5', 
+      glow: 'rgba(16, 185, 129, 0.7)'
     }
   ]
 
@@ -241,7 +247,7 @@ function App() {
             Espacio Holístico & Evolución Espiritual
           </p>
           <p style={{ color: colors.secondaryText, maxWidth: '750px', margin: '1.5rem auto 0 auto', fontSize: '1.1rem', lineHeight: '1.8', fontWeight: '300' }}>
-            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu realidad más elevada.
+            Un santuario de transmutación y luz diseñado para reconectarte con tu esencia divina, sanar desde la raíz y manifestar tu realidad más elevada. Descubrí lo que te bloquea, cámbiale la frecuencia y libérate.
           </p>
           <div style={{ width: '80px', height: '1px', backgroundColor: colors.goldRefined, margin: '2rem auto', opacity: 0.3 }}></div>
         </div>
